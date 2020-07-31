@@ -1,14 +1,16 @@
-import com.sun.rowset.internal.Row;
-
 public class Board {
     private final int[][] board; // 2D array of ints
 
-    //Constructs the 9 x 9 grid with empty cells detonated by 0
+    //Constructs the 9 x 9 grid with empty cells denoted by 0
     public Board() {
         board = new int[9][9];
         for (int row = 0; row < 9; row++)
             for (int col = 0; col < 9; col++)
                 board[row][col] = 0;
+    }
+    //Convert an input board into a Board object
+    public Board(int[][] inputBoard){
+        board = inputBoard;
     }
     //Sets the players move in the selected cell
     public boolean set_Move(int[] move, int number) {
@@ -19,17 +21,21 @@ public class Board {
             return false;
         }
     }
+
     public void reset_Move(int[]move){
         board[move[0]][move[1]] = 0;
     }
+
     //Gets the current value from a position on the board
     public int get_Move(int [] move){
         return board[move[0]][move[1]];
     }
+
     //Checks if the cell is free
     public boolean cell_Free(int[] move){
         return (board[move[0]][move[1]] == 0);
     }
+
     /*Checks if there are any available moves
      *Used for tie checking in Tic Tac Toe
      */
@@ -44,6 +50,7 @@ public class Board {
             }
         }return true;
     }
+
     //Displays the board state
     public void display(){
         // display the board
@@ -61,6 +68,7 @@ public class Board {
                 System.out.println();
         }System.out.println("#################");
     }
+
     //add actual checking for if all the digits are in the row
     public boolean check_Row(int row, char player){
         for (int col = 0; col < 9; col++){
@@ -68,6 +76,7 @@ public class Board {
                 return false; //cell didn't match
         }return true; // full row
     }
+
     //add actual checking for if all the digits are in the column
     public boolean check_Col(int col){
         for (int row = 0; row < 9; row++){
@@ -75,6 +84,7 @@ public class Board {
                 return false; //cell didn't match
         }return true; // full col
     }
+
     public int[][] to2DArray() {
         int[][] copyOfBoard = new int[9][9];
         for (int i = 0; i < 9; i++) {
