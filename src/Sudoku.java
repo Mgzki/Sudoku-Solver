@@ -17,17 +17,20 @@ public class Sudoku {
         int yEnd = pos[1] / 3;
         //Check rows
         for (int i = 0; i < 9; i++){
-            if (game.to2DArray()[pos[0]][i] == num && pos[0] != i)
+            // check for an instance of the value you want to input, but skip the column you just inserted at
+            if (game.to2DArray()[pos[0]][i] == num && pos[1] != i)
                 return false;
         }
         //Check columns
         for (int i = 0; i < 9; i++){
-            if (game.to2DArray()[i][pos[1]] == num && pos[1] != i)
+            // check for an instance of the value you want to input, but skip the row you just inserted at
+            if (game.to2DArray()[i][pos[1]] == num && pos[0] != i)
                 return false;
         }
         //Check Squares
         for (int i = xEnd*3; i < xEnd*3+3; i++) {
             for (int j = yEnd*3; j < yEnd*3+3; j++) {
+                // check for an instance of the value you want to input, but skip the row/column you just inserted at
                 if (game.to2DArray()[i][j] == num && !(pos[0] == i) && !(pos[1] == j))
                     return false;
             }
