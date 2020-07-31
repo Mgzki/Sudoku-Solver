@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class Sudoku {
     // Returns position of first empty cell if one is found, otherwise return invalid move
     public static int[] findEmpty(Board game){
